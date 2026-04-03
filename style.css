@@ -1,0 +1,543 @@
+/* ========== GLOBAL STYLES ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --charcoal-black: #1a1a1a;
+    --flame-orange: #ff4d00;
+    --embers-red: #b22222;
+    --jalebi-gold: #ffcc00;
+    --dark-gray: #222;
+    --medium-gray: #333;
+    --light-gray: #444;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--charcoal-black);
+    color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ========== NAVIGATION ========== */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--medium-gray);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo h2 {
+    color: var(--flame-orange);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-menu a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.nav-menu a:hover {
+    color: var(--flame-orange);
+}
+
+/* ========== SIZZLING GRILL BUTTON ========== */
+.khans-btn {
+    background: linear-gradient(45deg, var(--flame-orange), var(--embers-red));
+    color: var(--white);
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(255, 77, 0, 0.3);
+    font-size: 1rem;
+}
+
+.khans-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px var(--flame-orange);
+    animation: sizzle 0.1s infinite;
+}
+
+@keyframes sizzle {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    50% { transform: translate(-1px, -1px) rotate(0.5deg); }
+    100% { transform: translate(1px, -1px) rotate(-0.5deg); }
+}
+
+/* ========== OPEN STATUS WIDGET ========== */
+.status-box {
+    display: inline-block;
+    padding: 8px 15px;
+    background: var(--charcoal-black);
+    color: var(--flame-orange);
+    border: 1px solid var(--flame-orange);
+    border-radius: 50px;
+    font-family: monospace;
+    letter-spacing: 1px;
+    animation: flicker 2s infinite;
+    font-size: 0.8rem;
+}
+
+.status-box .dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: var(--flame-orange);
+    border-radius: 50%;
+    margin-right: 8px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+        box-shadow: 0 0 5px var(--flame-orange);
+    }
+    20%, 24%, 55% {
+        opacity: 0.4;
+        box-shadow: none;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* ========== HERO SECTION WITH SMOKE ========== */
+.smoke-container {
+    background: linear-gradient(rgba(26, 26, 26, 0.7), rgba(26, 26, 26, 0.8)), 
+                url('khan-barbeque.png') center/cover no-repeat;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding: 100px 20px 50px;
+}
+
+.hero-content h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--jalebi-gold);
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 10px var(--jalebi-gold); }
+    to { text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 20px var(--jalebi-gold), 0 0 30px var(--flame-orange); }
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.hero-subtitle {
+    font-size: 1rem !important;
+    opacity: 0.7 !important;
+    margin-bottom: 40px !important;
+}
+
+.smoke-wrap span {
+    position: absolute;
+    bottom: 0;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.1);
+    filter: blur(40px);
+    border-radius: 50%;
+    animation: smoke 5s infinite linear;
+}
+
+.s-1 { left: 20%; animation-delay: 0s; }
+.s-2 { left: 50%; animation-delay: 2s; }
+.s-3 { left: 70%; animation-delay: 1s; }
+
+@keyframes smoke {
+    0% { transform: translateY(0) scale(1); opacity: 0; }
+    50% { opacity: 0.5; }
+    100% { transform: translateY(-250px) scale(2); opacity: 0; }
+}
+
+/* ========== GLOWING EMBER CARD ========== */
+.food-card {
+    background: var(--dark-gray);
+    border-radius: 12px;
+    padding: 20px;
+    border: 2px solid var(--medium-gray);
+    transition: 0.5s;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.food-card:hover {
+    border-color: var(--flame-orange);
+    box-shadow: inset 0 0 15px var(--flame-orange), 0 0 20px rgba(255, 77, 0, 0.4);
+    transform: translateY(-5px);
+}
+
+.food-card h3 {
+    color: var(--jalebi-gold);
+    margin-bottom: 10px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.3rem;
+}
+
+.food-card p {
+    color: #ccc;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.price {
+    color: var(--flame-orange);
+    font-weight: bold;
+    font-size: 1.1rem;
+    font-family: 'Oswald', sans-serif;
+}
+
+.card-image {
+    width: 100%;
+    height: 150px;
+    background: var(--medium-gray);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.placeholder-img {
+    font-size: 3rem;
+    opacity: 0.7;
+}
+
+.placeholder-img.large {
+    font-size: 8rem;
+}
+
+/* ========== MENU SECTION ========== */
+.menu-section {
+    padding: 80px 0;
+    background: linear-gradient(180deg, rgba(26, 26, 26, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%),
+                url('https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+    background-attachment: fixed;
+}
+
+.section-title {
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    color: var(--jalebi-gold);
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* ========== ABOUT SECTION ========== */
+.about-section {
+    padding: 80px 0;
+    background: linear-gradient(rgba(34, 34, 34, 0.9), rgba(34, 34, 34, 0.95)),
+                url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+    background-attachment: fixed;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-text h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    color: var(--jalebi-gold);
+    margin-bottom: 30px;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+    color: #ccc;
+}
+
+.features {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: var(--white);
+}
+
+.feature-icon {
+    font-size: 1.5rem;
+}
+
+.about-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ========== CONTACT SECTION ========== */
+.contact-section {
+    padding: 80px 0;
+    background: linear-gradient(rgba(26, 26, 26, 0.9), rgba(26, 26, 26, 0.95)),
+                url('https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+    background-attachment: fixed;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+
+.contact-item {
+    margin-bottom: 30px;
+}
+
+.contact-item h3 {
+    color: var(--jalebi-gold);
+    margin-bottom: 10px;
+    font-family: 'Oswald', sans-serif;
+}
+
+.contact-item p {
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.contact-form {
+    background: var(--dark-gray);
+    padding: 30px;
+    border-radius: 12px;
+    border: 2px solid var(--medium-gray);
+}
+
+.contact-form h3 {
+    color: var(--jalebi-gold);
+    margin-bottom: 20px;
+    font-family: 'Oswald', sans-serif;
+}
+
+.contact-form input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: var(--charcoal-black);
+    border: 1px solid var(--medium-gray);
+    border-radius: 5px;
+    color: var(--white);
+    font-family: inherit;
+}
+
+.contact-form input:focus {
+    outline: none;
+    border-color: var(--flame-orange);
+}
+
+.contact-form button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* ========== FOOTER ========== */
+.footer {
+    background: var(--dark-gray);
+    padding: 40px 0 20px;
+    border-top: 1px solid var(--medium-gray);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.footer-logo h3 {
+    color: var(--jalebi-gold);
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 10px;
+}
+
+.footer-logo p {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.footer-social p {
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: var(--white);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    background: var(--medium-gray);
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.social-icon.facebook:hover {
+    background: #1877f2;
+    box-shadow: 0 5px 15px rgba(24, 119, 242, 0.4);
+}
+
+.social-icon.instagram:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    box-shadow: 0 5px 15px rgba(225, 48, 108, 0.4);
+}
+
+.social-icon.whatsapp:hover {
+    background: #25d366;
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid var(--medium-gray);
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+    
+    .about-content,
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .khans-btn {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .status-box {
+        font-size: 0.7rem;
+        padding: 6px 12px;
+    }
+}
